@@ -1,4 +1,5 @@
 class ExpensesController < ApplicationController
+  before_action :set_default_response_format
   def index
     @expenses = Expense.all
   end
@@ -36,5 +37,11 @@ class ExpensesController < ApplicationController
                                     :account_id,
                                     :note,
                                     :amount_attributes => [:value])
+  end
+
+
+
+  def set_default_response_format
+    request.format = :json
   end
 end
